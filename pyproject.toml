@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asteroidbelt"
+version = "1.0.0"
+description = "Eyepiece magnifications, Messier viewing windows and per-session target mark-off"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+asteroidbelt = "asteroidbelt:main"
+
+[tool.setuptools]
+py-modules = ["asteroidbelt"]

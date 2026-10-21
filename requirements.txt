@@ -1,0 +1,5 @@
+# AsteroidBelt runtime dependencies: none — the tool is standard library only.
+#
+# The single entry below is the test runner, so a clean checkout can run the
+# project's own suite with:  python3 -m pytest -q
+pytest==9.1.1
