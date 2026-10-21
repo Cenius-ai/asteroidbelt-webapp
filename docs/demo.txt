@@ -1,0 +1,455 @@
+# AsteroidBelt demo — generated with: bash demo.sh docs/demo.txt
+# Every command runs against a throwaway ./demo.json data file.
+
+$ asteroidbelt config show
+focal length: (unset)
+aperture: (unset)
+data file: ./demo.json
+set them with: asteroidbelt config set --focal-length 1200 --aperture 200
+
+$ asteroidbelt config set --focal-length 1200 --aperture 200
+focal length: 1200 mm
+aperture: 200 mm
+data file: ./demo.json
+
+$ asteroidbelt eyepieces add --name "32mm Plössl" --focal-length 32 --afov 50
+added eyepiece #1: 32mm Plössl (38x)
+
+$ asteroidbelt eyepieces add --name "25mm Plössl" --focal-length 25 --afov 52
+added eyepiece #2: 25mm Plössl (48x)
+
+$ asteroidbelt eyepieces add --name "12mm Radian" --focal-length 12 --afov 60
+added eyepiece #3: 12mm Radian (100x)
+
+$ asteroidbelt eyepieces add --name "9mm Ortho" --focal-length 9 --afov 42
+added eyepiece #4: 9mm Ortho (133x)
+
+$ asteroidbelt eyepieces list
+  #  Name                    FL (mm)   AFOV    Mag  Exit(mm)    TFOV
+--------------------------------------------------------------------
+  4  9mm Ortho                     9     42   133x       1.5   0.32°
+  3  12mm Radian                  12     60   100x       2.0   0.60°
+  2  25mm Plössl                  25     52    48x       4.2   1.08°
+  1  32mm Plössl                  32     50    38x       5.3   1.33°
+
+$ asteroidbelt targets --month 12 --type nebula
+M#    Name                    Type            Con    Mag  Months         Season
+-------------------------------------------------------------------------------
+M76   Little Dumbbell Nebula  planetary neb.  Per   10.1  Sep–Jan        yes
+M42   Orion Nebula            nebula          Ori    4.0  Dec–Mar        yes
+M43   De Mairan's Nebula      nebula          Ori    9.0  Dec–Mar        yes
+M78   NGC 2068                nebula          Ori    8.3  Dec–Mar        yes
+4 of 110 targets
+
+$ asteroidbelt targets --search orion
+M#    Name                    Type            Con    Mag  Months         Season
+-------------------------------------------------------------------------------
+M42   Orion Nebula            nebula          Ori    4.0  Dec–Mar        -
+1 of 110 targets
+
+$ asteroidbelt targets --type galaxy --constellation And
+M#    Name                    Type            Con    Mag  Months         Season
+-------------------------------------------------------------------------------
+M31   Andromeda Galaxy        galaxy          And    3.4  Aug–Feb        -
+M32   NGC 221                 galaxy          And    8.1  Aug–Feb        -
+M110  NGC 205                 galaxy          And    8.5  Aug–Feb        -
+3 of 110 targets
+
+$ asteroidbelt session start --date 2026-10-04 --title "Back garden, first clear night"
+started session 1 — 2026-10-04 "Back garden, first clear night"
+mark a target with: asteroidbelt session mark 1 M31
+
+$ asteroidbelt session mark 1 M42 --note "Trapezium split cleanly at 100x; wings obvious."
+marked M42 in session 1 (1 of 110 observed)
+
+$ asteroidbelt session mark 1 M43
+marked M43 in session 1 (2 of 110 observed)
+
+$ asteroidbelt session mark 1 M45 --note "Whole cluster fits the 32mm field at 38x."
+marked M45 in session 1 (3 of 110 observed)
+
+$ asteroidbelt session show 1
+session 1 — 2026-10-04 "Back garden, first clear night"
+observed 3 / remaining 107
+
+Observed
+  M42  Orion Nebula
+    Trapezium split cleanly at 100x; wings obvious.
+  M43  De Mairan's Nebula
+  M45  Pleiades
+    Whole cluster fits the 32mm field at 38x.
+
+Remaining
+  M44   Beehive Cluster         Jan–Apr
+  M48   NGC 2548                Jan–Apr
+  M67   NGC 2682                Jan–Apr
+  M81   Bode's Galaxy           Feb–Jun
+  M82   Cigar Galaxy            Feb–Jun
+  M97   Owl Nebula              Feb–Jun
+  M108  Surfboard Galaxy        Feb–Jun
+  M109  NGC 3992                Feb–Jun
+  M3    NGC 5272                Mar–Jul
+  M40   Winnecke 4              Mar–Jun
+  M49   NGC 4472                Mar–Jul
+  M51   Whirlpool Galaxy        Mar–Jul
+  M53   NGC 5024                Mar–Jul
+  M58   NGC 4579                Mar–Jul
+  M59   NGC 4621                Mar–Jul
+  M60   NGC 4649                Mar–Jul
+  M61   NGC 4303                Mar–Jul
+  M63   Sunflower Galaxy        Mar–Jul
+  M64   Black Eye Galaxy        Mar–Jul
+  M65   NGC 3623                Mar–Jul
+  M66   NGC 3627                Mar–Jul
+  M68   NGC 4590                Mar–Jun
+  M83   Southern Pinwheel       Mar–Jul
+  M84   NGC 4374                Mar–Jul
+  M85   NGC 4382                Mar–Jul
+  M86   NGC 4406                Mar–Jul
+  M87   Virgo A                 Mar–Jul
+  M88   NGC 4501                Mar–Jul
+  M89   NGC 4552                Mar–Jul
+  M90   NGC 4569                Mar–Jul
+  M91   NGC 4548                Mar–Jul
+  M94   NGC 4736                Mar–Jul
+  M95   NGC 3351                Mar–Jul
+  M96   NGC 3368                Mar–Jul
+  M98   NGC 4192                Mar–Jul
+  M99   Coma Pinwheel Galaxy    Mar–Jul
+  M100  NGC 4321                Mar–Jul
+  M101  Pinwheel Galaxy         Mar–Jul
+  M104  Sombrero Galaxy         Mar–Jul
+  M105  NGC 3379                Mar–Jul
+  M106  NGC 4258                Mar–Jul
+  M5    NGC 5904                Apr–Aug
+  M13   Hercules Cluster        Apr–Aug
+  M92   NGC 6341                Apr–Aug
+  M102  Spindle Galaxy          Apr–Aug
+  M4    NGC 6121                May–Aug
+  M6    Butterfly Cluster       May–Aug
+  M7    Ptolemy Cluster         May–Aug
+  M9    NGC 6333                May–Aug
+  M10   NGC 6254                May–Aug
+  M12   NGC 6218                May–Aug
+  M14   NGC 6402                May–Aug
+  M19   NGC 6273                May–Aug
+  M56   NGC 6779                May–Sep
+  M57   Ring Nebula             May–Sep
+  M62   NGC 6266                May–Aug
+  M80   NGC 6093                May–Aug
+  M107  NGC 6171                May–Aug
+  M8    Lagoon Nebula           Jun–Sep
+  M11   Wild Duck Cluster       Jun–Sep
+  M16   Eagle Nebula            Jun–Sep
+  M17   Omega Nebula            Jun–Sep
+  M18   NGC 6613                Jun–Sep
+  M20   Trifid Nebula           Jun–Sep
+  M21   NGC 6531                Jun–Sep
+  M22   Sagittarius Cluster     Jun–Sep
+  M23   NGC 6494                Jun–Sep
+  M24   Sagittarius Star Cloud  Jun–Sep
+  M25   IC 4725                 Jun–Sep
+  M26   NGC 6694                Jun–Sep
+  M27   Dumbbell Nebula         Jun–Oct
+  M28   NGC 6626                Jun–Sep
+  M29   NGC 6913                Jun–Oct
+  M39   NGC 7092                Jun–Oct
+  M54   NGC 6715                Jun–Sep
+  M55   NGC 6809                Jun–Sep
+  M69   NGC 6637                Jun–Sep
+  M70   NGC 6681                Jun–Sep
+  M71   NGC 6838                Jun–Sep
+  M75   NGC 6864                Jun–Sep
+  M2    NGC 7089                Jul–Nov
+  M15   NGC 7078                Jul–Nov
+  M72   NGC 6981                Jul–Nov
+  M73   NGC 6994                Jul–Nov
+  M30   NGC 7099                Aug–Nov
+  M31   Andromeda Galaxy        Aug–Feb
+  M32   NGC 221                 Aug–Feb
+  M52   NGC 7654                Aug–Dec
+  M103  NGC 581                 Aug–Dec
+  M110  NGC 205                 Aug–Feb
+  M33   Triangulum Galaxy       Sep–Jan
+  M34   NGC 1039                Sep–Jan
+  M74   Phantom Galaxy          Sep–Jan
+  M76   Little Dumbbell Nebula  Sep–Jan
+  M77   Cetus A                 Oct–Jan
+  M1    Crab Nebula             Nov–Feb
+  M35   NGC 2168                Nov–Mar
+  M36   NGC 1960                Nov–Mar
+  M37   NGC 2099                Nov–Mar
+  M38   NGC 1912                Nov–Mar
+  M41   NGC 2287                Dec–Mar
+  M46   NGC 2437                Dec–Mar
+  M47   NGC 2422                Dec–Mar
+  M50   NGC 2323                Dec–Mar
+  M78   NGC 2068                Dec–Mar
+  M79   NGC 1904                Dec–Mar
+  M93   NGC 2447                Dec–Mar
+
+$ asteroidbelt session start --date 2026-10-18 --title "Cold night, steady seeing"
+started session 2 — 2026-10-18 "Cold night, steady seeing"
+mark a target with: asteroidbelt session mark 2 M31
+
+$ asteroidbelt session mark 2 M31 --note "Dust lane held with averted vision at 48x."
+marked M31 in session 2 (1 of 110 observed)
+
+$ asteroidbelt session mark 2 M44 --note "Beehive resolved into two dozen stars at 100x."
+marked M44 in session 2 (2 of 110 observed)
+
+$ asteroidbelt session show 2
+session 2 — 2026-10-18 "Cold night, steady seeing"
+observed 2 / remaining 108
+
+Observed
+  M31  Andromeda Galaxy
+    Dust lane held with averted vision at 48x.
+  M44  Beehive Cluster
+    Beehive resolved into two dozen stars at 100x.
+
+Remaining
+  M48   NGC 2548                Jan–Apr
+  M67   NGC 2682                Jan–Apr
+  M81   Bode's Galaxy           Feb–Jun
+  M82   Cigar Galaxy            Feb–Jun
+  M97   Owl Nebula              Feb–Jun
+  M108  Surfboard Galaxy        Feb–Jun
+  M109  NGC 3992                Feb–Jun
+  M3    NGC 5272                Mar–Jul
+  M40   Winnecke 4              Mar–Jun
+  M49   NGC 4472                Mar–Jul
+  M51   Whirlpool Galaxy        Mar–Jul
+  M53   NGC 5024                Mar–Jul
+  M58   NGC 4579                Mar–Jul
+  M59   NGC 4621                Mar–Jul
+  M60   NGC 4649                Mar–Jul
+  M61   NGC 4303                Mar–Jul
+  M63   Sunflower Galaxy        Mar–Jul
+  M64   Black Eye Galaxy        Mar–Jul
+  M65   NGC 3623                Mar–Jul
+  M66   NGC 3627                Mar–Jul
+  M68   NGC 4590                Mar–Jun
+  M83   Southern Pinwheel       Mar–Jul
+  M84   NGC 4374                Mar–Jul
+  M85   NGC 4382                Mar–Jul
+  M86   NGC 4406                Mar–Jul
+  M87   Virgo A                 Mar–Jul
+  M88   NGC 4501                Mar–Jul
+  M89   NGC 4552                Mar–Jul
+  M90   NGC 4569                Mar–Jul
+  M91   NGC 4548                Mar–Jul
+  M94   NGC 4736                Mar–Jul
+  M95   NGC 3351                Mar–Jul
+  M96   NGC 3368                Mar–Jul
+  M98   NGC 4192                Mar–Jul
+  M99   Coma Pinwheel Galaxy    Mar–Jul
+  M100  NGC 4321                Mar–Jul
+  M101  Pinwheel Galaxy         Mar–Jul
+  M104  Sombrero Galaxy         Mar–Jul
+  M105  NGC 3379                Mar–Jul
+  M106  NGC 4258                Mar–Jul
+  M5    NGC 5904                Apr–Aug
+  M13   Hercules Cluster        Apr–Aug
+  M92   NGC 6341                Apr–Aug
+  M102  Spindle Galaxy          Apr–Aug
+  M4    NGC 6121                May–Aug
+  M6    Butterfly Cluster       May–Aug
+  M7    Ptolemy Cluster         May–Aug
+  M9    NGC 6333                May–Aug
+  M10   NGC 6254                May–Aug
+  M12   NGC 6218                May–Aug
+  M14   NGC 6402                May–Aug
+  M19   NGC 6273                May–Aug
+  M56   NGC 6779                May–Sep
+  M57   Ring Nebula             May–Sep
+  M62   NGC 6266                May–Aug
+  M80   NGC 6093                May–Aug
+  M107  NGC 6171                May–Aug
+  M8    Lagoon Nebula           Jun–Sep
+  M11   Wild Duck Cluster       Jun–Sep
+  M16   Eagle Nebula            Jun–Sep
+  M17   Omega Nebula            Jun–Sep
+  M18   NGC 6613                Jun–Sep
+  M20   Trifid Nebula           Jun–Sep
+  M21   NGC 6531                Jun–Sep
+  M22   Sagittarius Cluster     Jun–Sep
+  M23   NGC 6494                Jun–Sep
+  M24   Sagittarius Star Cloud  Jun–Sep
+  M25   IC 4725                 Jun–Sep
+  M26   NGC 6694                Jun–Sep
+  M27   Dumbbell Nebula         Jun–Oct
+  M28   NGC 6626                Jun–Sep
+  M29   NGC 6913                Jun–Oct
+  M39   NGC 7092                Jun–Oct
+  M54   NGC 6715                Jun–Sep
+  M55   NGC 6809                Jun–Sep
+  M69   NGC 6637                Jun–Sep
+  M70   NGC 6681                Jun–Sep
+  M71   NGC 6838                Jun–Sep
+  M75   NGC 6864                Jun–Sep
+  M2    NGC 7089                Jul–Nov
+  M15   NGC 7078                Jul–Nov
+  M72   NGC 6981                Jul–Nov
+  M73   NGC 6994                Jul–Nov
+  M30   NGC 7099                Aug–Nov
+  M32   NGC 221                 Aug–Feb
+  M52   NGC 7654                Aug–Dec
+  M103  NGC 581                 Aug–Dec
+  M110  NGC 205                 Aug–Feb
+  M33   Triangulum Galaxy       Sep–Jan
+  M34   NGC 1039                Sep–Jan
+  M74   Phantom Galaxy          Sep–Jan
+  M76   Little Dumbbell Nebula  Sep–Jan
+  M45   Pleiades                Oct–Feb
+  M77   Cetus A                 Oct–Jan
+  M1    Crab Nebula             Nov–Feb
+  M35   NGC 2168                Nov–Mar
+  M36   NGC 1960                Nov–Mar
+  M37   NGC 2099                Nov–Mar
+  M38   NGC 1912                Nov–Mar
+  M41   NGC 2287                Dec–Mar
+  M42   Orion Nebula            Dec–Mar
+  M43   De Mairan's Nebula      Dec–Mar
+  M46   NGC 2437                Dec–Mar
+  M47   NGC 2422                Dec–Mar
+  M50   NGC 2323                Dec–Mar
+  M78   NGC 2068                Dec–Mar
+  M79   NGC 1904                Dec–Mar
+  M93   NGC 2447                Dec–Mar
+
+$ asteroidbelt session list
+ ID  Date        Title                     Observed  Remaining
+--------------------------------------------------------------
+  1  2026-10-04  Back garden, first clea…         3        107
+  2  2026-10-18  Cold night, steady seei…         2        108
+2 sessions — 5 of 110 Messier objects observed
+
+$ asteroidbelt targets --unobserved --constellation Ori
+M#    Name                    Type            Con    Mag  Months         Season
+-------------------------------------------------------------------------------
+M78   NGC 2068                nebula          Ori    8.3  Dec–Mar        -
+1 of 110 unobserved across 2 sessions
+
+$ asteroidbelt session unmark 2 M44
+unmarked M44 in session 2 (1 of 110 observed)
+
+$ asteroidbelt session show 2
+session 2 — 2026-10-18 "Cold night, steady seeing"
+observed 1 / remaining 109
+
+Observed
+  M31  Andromeda Galaxy
+    Dust lane held with averted vision at 48x.
+
+Remaining
+  M44   Beehive Cluster         Jan–Apr
+  M48   NGC 2548                Jan–Apr
+  M67   NGC 2682                Jan–Apr
+  M81   Bode's Galaxy           Feb–Jun
+  M82   Cigar Galaxy            Feb–Jun
+  M97   Owl Nebula              Feb–Jun
+  M108  Surfboard Galaxy        Feb–Jun
+  M109  NGC 3992                Feb–Jun
+  M3    NGC 5272                Mar–Jul
+  M40   Winnecke 4              Mar–Jun
+  M49   NGC 4472                Mar–Jul
+  M51   Whirlpool Galaxy        Mar–Jul
+  M53   NGC 5024                Mar–Jul
+  M58   NGC 4579                Mar–Jul
+  M59   NGC 4621                Mar–Jul
+  M60   NGC 4649                Mar–Jul
+  M61   NGC 4303                Mar–Jul
+  M63   Sunflower Galaxy        Mar–Jul
+  M64   Black Eye Galaxy        Mar–Jul
+  M65   NGC 3623                Mar–Jul
+  M66   NGC 3627                Mar–Jul
+  M68   NGC 4590                Mar–Jun
+  M83   Southern Pinwheel       Mar–Jul
+  M84   NGC 4374                Mar–Jul
+  M85   NGC 4382                Mar–Jul
+  M86   NGC 4406                Mar–Jul
+  M87   Virgo A                 Mar–Jul
+  M88   NGC 4501                Mar–Jul
+  M89   NGC 4552                Mar–Jul
+  M90   NGC 4569                Mar–Jul
+  M91   NGC 4548                Mar–Jul
+  M94   NGC 4736                Mar–Jul
+  M95   NGC 3351                Mar–Jul
+  M96   NGC 3368                Mar–Jul
+  M98   NGC 4192                Mar–Jul
+  M99   Coma Pinwheel Galaxy    Mar–Jul
+  M100  NGC 4321                Mar–Jul
+  M101  Pinwheel Galaxy         Mar–Jul
+  M104  Sombrero Galaxy         Mar–Jul
+  M105  NGC 3379                Mar–Jul
+  M106  NGC 4258                Mar–Jul
+  M5    NGC 5904                Apr–Aug
+  M13   Hercules Cluster        Apr–Aug
+  M92   NGC 6341                Apr–Aug
+  M102  Spindle Galaxy          Apr–Aug
+  M4    NGC 6121                May–Aug
+  M6    Butterfly Cluster       May–Aug
+  M7    Ptolemy Cluster         May–Aug
+  M9    NGC 6333                May–Aug
+  M10   NGC 6254                May–Aug
+  M12   NGC 6218                May–Aug
+  M14   NGC 6402                May–Aug
+  M19   NGC 6273                May–Aug
+  M56   NGC 6779                May–Sep
+  M57   Ring Nebula             May–Sep
+  M62   NGC 6266                May–Aug
+  M80   NGC 6093                May–Aug
+  M107  NGC 6171                May–Aug
+  M8    Lagoon Nebula           Jun–Sep
+  M11   Wild Duck Cluster       Jun–Sep
+  M16   Eagle Nebula            Jun–Sep
+  M17   Omega Nebula            Jun–Sep
+  M18   NGC 6613                Jun–Sep
+  M20   Trifid Nebula           Jun–Sep
+  M21   NGC 6531                Jun–Sep
+  M22   Sagittarius Cluster     Jun–Sep
+  M23   NGC 6494                Jun–Sep
+  M24   Sagittarius Star Cloud  Jun–Sep
+  M25   IC 4725                 Jun–Sep
+  M26   NGC 6694                Jun–Sep
+  M27   Dumbbell Nebula         Jun–Oct
+  M28   NGC 6626                Jun–Sep
+  M29   NGC 6913                Jun–Oct
+  M39   NGC 7092                Jun–Oct
+  M54   NGC 6715                Jun–Sep
+  M55   NGC 6809                Jun–Sep
+  M69   NGC 6637                Jun–Sep
+  M70   NGC 6681                Jun–Sep
+  M71   NGC 6838                Jun–Sep
+  M75   NGC 6864                Jun–Sep
+  M2    NGC 7089                Jul–Nov
+  M15   NGC 7078                Jul–Nov
+  M72   NGC 6981                Jul–Nov
+  M73   NGC 6994                Jul–Nov
+  M30   NGC 7099                Aug–Nov
+  M32   NGC 221                 Aug–Feb
+  M52   NGC 7654                Aug–Dec
+  M103  NGC 581                 Aug–Dec
+  M110  NGC 205                 Aug–Feb
+  M33   Triangulum Galaxy       Sep–Jan
+  M34   NGC 1039                Sep–Jan
+  M74   Phantom Galaxy          Sep–Jan
+  M76   Little Dumbbell Nebula  Sep–Jan
+  M45   Pleiades                Oct–Feb
+  M77   Cetus A                 Oct–Jan
+  M1    Crab Nebula             Nov–Feb
+  M35   NGC 2168                Nov–Mar
+  M36   NGC 1960                Nov–Mar
+  M37   NGC 2099                Nov–Mar
+  M38   NGC 1912                Nov–Mar
+  M41   NGC 2287                Dec–Mar
+  M42   Orion Nebula            Dec–Mar
+  M43   De Mairan's Nebula      Dec–Mar
+  M46   NGC 2437                Dec–Mar
+  M47   NGC 2422                Dec–Mar
+  M50   NGC 2323                Dec–Mar
+  M78   NGC 2068                Dec–Mar
+  M79   NGC 1904                Dec–Mar
+  M93   NGC 2447                Dec–Mar
+
