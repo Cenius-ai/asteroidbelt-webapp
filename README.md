@@ -38,7 +38,7 @@ See [`INSTALL.md`](INSTALL.md) for full setup and usage instructions.
 
 ## Architecture
 
-The repository contains 24 files of Full-stack app source, organised under `docs/`, `tests/`. `install.sh` provisions dependencies and seeds demo data so the app starts with something real to explore. Installation walkthrough: [`INSTALL.md`](INSTALL.md).
+The repository contains 14 files of Full-stack app source, organised under `docs/`, `tests/`. `install.sh` provisions dependencies and seeds demo data so the app starts with something real to explore. Installation walkthrough: [`INSTALL.md`](INSTALL.md).
 
 ## Usage guide
 
